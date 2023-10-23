@@ -1,0 +1,83 @@
+/* ------------ */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+/* ------------ */
+body {
+  font-family: monospace;
+  height: 100%;
+  background-color: white;
+}
+h1 {
+  width: 100%;
+  margin-bottom: 40px;
+}
+/* ------------ */
+.container {
+  height: 100%;
+  width: 100%;
+  max-width: 570px;
+  margin: 0 auto;
+  padding: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* ------------ */
+.form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 60px;
+  grid-column-gap: 10px;
+}
+.form-submit {
+  outline: none;
+  border: 1px solid rgb(232, 232, 232);
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 36px;
+}
+.form-submit:focus {
+  box-shadow: 0 0 0 0.5px rgb(153, 153, 153);
+}
+.card {
+  width: 100%;
+  margin: 10px;
+  padding: 20px 10px;
+  border: 1px solid rgb(232, 232, 232);
+  background-color: white;
+  border-radius: 5px;
+  text-wrap: balance;
+  text-align: center;
+}
+/* ------------ */
+@media (max-width: 330px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 10px;
+  }
+  .form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-gap: 5px;
+  }
+  h1 {
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+}

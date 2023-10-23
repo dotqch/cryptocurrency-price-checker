@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Cryptocurrency Price Checker</title>
+</head>
+
+<body>
+    <div class="container">
+        <% if (locals.base && locals.counter) { %>
+            <h1>Cryptocurrency Price Checker</h1>
+            <form action="/" id="form" class="form" method="POST">
+                <label for="" style="margin-bottom: 5px;">Base currency</label>
+                <label for="" style="margin-bottom: 5px;">Counter currency</label>
+                <br>
+                <select name="base" id="form-base">
+                    <% for (let b in base) { %>
+                        <% if (locals.selectedBase) { %>
+                            <% if (base[b]===locals.selectedBase) { %>
+                                <option value="<%= base[b] %>" selected>
+                                    <%= base[b] %>
+                                </option>
+                                <% } else { %>
+                                    <option value="<%= base[b] %>">
+                                        <%= base[b] %>
+                                    </option>
+                                    <% } %>
+                                        <% } else { %>
+                                            <% if (base[b]==="BTC" ) { %>
+                                                <option value="<%= base[b] %>" selected>
+                                                    <%= base[b] %>
+                                                </option>
+                                                <% } else { %>
+                                                    <option value="<%= base[b] %>">
+                                                        <%= base[b] %>
+                                                    </option>
+                                                    <% } %>
+                                                        <% } %>
+                                                            <% } %>
+                </select>
+                <select name="counter">
+                    <% for (let c in counter) { %>
+                        <% if (locals.selectedCounter) { %>
+                            <% if (counter[c]===locals.selectedCounter) { %>
+                                <option value="<%= counter[c] %>" selected>
+                                    <%= counter[c] %>
+                                </option>
+                                <% } else { %>
+                                    <option value="<%= counter[c] %>">
+                                        <%= counter[c] %>
+                                    </option>
+                                    <% } %>
+                                        <% } else { %>
+                                            <% if (counter[c]==="USD" ) { %>
+                                                <option value="<%= counter[c] %>" selected>
+                                                    <%= counter[c] %>
+                                                </option>
+                                                <% } else { %>
+                                                    <option value="<%= counter[c] %>">
+                                                        <%= counter[c] %>
+                                                    </option>
+                                                    <% } %>
+                                                        <% } %>
+                                                            <% } %>
+                </select>
+                <button type="submit" class="form-submit">Go</button>
+            </form>
+
+            <% if (locals.ticker) { %>
+                <section class="card">
+                    <% if (locals.ticker.symbol) { %>
+                        <p>symbol:'<%= ticker.symbol %>', price_24h: <%= ticker.price_24h %>,</p>
+                        <p>volume_24h: <%= ticker.volume_24h %>, last_trade_price: <%= ticker.last_trade_price %>
+                        </p>
+                        <% } else { %>
+                            <p>
+                                <%= ticker %>
+                            </p>
+                            <% } %>
+                </section>
+                <% } %>
+
+    </div>
+    <% } else { %>
+        <p>
+            <%= error %>
+        </p>
+        <% } %>
+
+</body>
+
+</html>
